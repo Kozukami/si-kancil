@@ -3,7 +3,7 @@
 **Live dashboard:** https://kozukami.github.io/si-kancil/kancil.html
 **Live lookup endpoint:** https://kancil-lookup.kancil-kori.workers.dev
 
-> *We pre-registered a validation gate. 1 of 12 signals passed. Widened to 48 tests, 0 survive multiple-comparison correction. We report both numbers in the same view. That is the product.*
+> *I pre-registered a validation gate. 1 of 12 signals passed. Widened to 48 tests, 0 survive multiple-comparison correction. I report both numbers in the same view. That is the product.*
 
 ---
 
@@ -11,7 +11,7 @@
 
 Si Kancil adalah dashboard analitik tren fesyen untuk UMKM Indonesia, dibangun dari Naver DataLab (Korea) dan Google Trends (Indonesia), rentang 2017–2026.
 
-Kami **pra-registrasi gate validasi** sebelum melihat data: forecast 3 bulan harus mengalahkan baseline *persistence* (MASE gain > 0, block-bootstrap 95% CI > 0, gain ≥ 10%). Hasilnya kami tampilkan apa adanya:
+Saya **pra-registrasi gate validasi** sebelum melihat data: forecast 3 bulan harus mengalahkan baseline *persistence* (MASE gain > 0, block-bootstrap 95% CI > 0, gain ≥ 10%). Hasilnya saya tampilkan apa adanya:
 
 | Metrik | Hasil |
 |---|---|
@@ -44,22 +44,22 @@ The dashboard answers one question: **"Of all the signals I see, which ones are 
 
 The same four numbers appear on the dashboard hero and in every report:
 
-- **1 of 12** items passed our pre-registered 3-month forecast gate
+- **1 of 12** items passed the pre-registered 3-month forecast gate
 - **0 of 48** survive Benjamini-Hochberg correction when the gate is widened to 4 horizons
 - **0 of 12** Korea → Indonesia lead-lag relationships survive FDR
 - **9 of 12** lead-lag relationships trigger a placebo warning
 
-We show all four simultaneously. Most trend products show only the first.
+I show all four simultaneously. Most trend products show only the first.
 
 ---
 
 ## The pre-registered gate
 
-Before any data was seen, we fixed the criteria for calling a signal "validated":
+Before any data was seen, I fixed the criteria for calling a signal "validated":
 
 > A candidate model must (a) beat a persistence baseline on mean MASE, (b) have a block-bootstrap 95% confidence interval above 0, and (c) achieve ≥ 10% relative improvement over persistence.
 
-The gate is not adjusted after results are seen. This is the core discipline of the project. The pipeline holds us to it — the dashboard reads `verdict: "validated"` or `verdict: "not_validated"` directly from `trend_radar.json` and refuses to display a forecast for any item that didn't pass.
+The gate is not adjusted after results are seen. This is the core discipline of the project. The pipeline holds the design to it — the dashboard reads `verdict: "validated"` or `verdict: "not_validated"` directly from `trend_radar.json` and refuses to display a forecast for any item that didn't pass.
 
 **Note:** cotton is displayed in *amber*, labelled "passed initial test" — never as "verified". It passes the single-horizon gate, but fails BH correction when the gate is widened to 48 tests (raw p = 0.0015 → BH-adjusted p = 0.072).
 
@@ -86,9 +86,9 @@ The single-horizon gate (h=3) was extended to horizons {1, 3, 6, 12} with BH cor
 
 ### Lead-lag Korea → Indonesia (exploratory) — 0 of 12
 
-We tested whether Naver (Korea) leads Google (Indonesia) at any lag in [-6, +8] months. No pair survives FDR at α = 0.05. 9 of 12 trigger a placebo warning: an unrelated item correlates as strongly as the pair itself, indicating a shared trend/shock rather than a specific adoption lag.
+I tested whether Naver (Korea) leads Google (Indonesia) at any lag in [-6, +8] months. No pair survives FDR at α = 0.05. 9 of 12 trigger a placebo warning: an unrelated item correlates as strongly as the pair itself, indicating a shared trend/shock rather than a specific adoption lag.
 
-**We do not claim Korea leads Indonesia.** The Korean data is context, not causation.
+**I do not claim Korea leads Indonesia.** The Korean data is context, not causation.
 
 ---
 
