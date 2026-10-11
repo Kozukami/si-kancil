@@ -120,3 +120,87 @@ To rebuild it from the current `trend_radar.json`:
 ```bash
 cd src
 python build_frontend.py
+
+```
+
+Expected output:
+
+```
+[OK] ... | schema 4.4 | validated 1/12 | multi-horizon 0/48 | lag {'n': 12, 'fdr': 0, 'placebo': 9}
+```
+
+### Pipeline (from raw data to `trend_radar.json`)
+
+```bash
+cd src
+bash run_all.sh
+```
+
+Key scripts in `src/`: `load_data.py`, `clean.py`, `seasonality.py`, `lifecycle.py`, `lebaran_effect.py`, `lag_analysis.py`, `forecast.py`, `forecast_multi_horizon.py`, `trend_radar.py`, `build_frontend.py`, `check_json_v2.py`.
+
+---
+
+## Repository structure
+
+```
+.
+├── README.md
+├── kancil.html
+├── src/
+│   ├── kancil_template.html
+│   ├── build_frontend.py
+│   ├── langflow_component.py
+│   ├── trend_radar.py
+│   ├── forecast.py
+│   ├── forecast_multi_horizon.py
+│   ├── lag_analysis.py
+│   ├── check_json_v2.py
+│   └── run_all.sh
+└── data/processed/
+    ├── trend_radar.json
+    ├── forecast_skill_multi_horizon.csv
+    └── lag_results.csv
+```
+
+---
+
+## Known limitations
+
+- Naver and Google keywords are not semantically equivalent across languages
+- Search interest is not sales
+- Phase offset may reflect shared year-end seasonality, not adoption lag
+- Forecast values exist only for validated items (1 of 12)
+- Forecast CIs are block-bootstrap based and approximate; fold autocorrelation is not fully corrected
+- Feb-2026 Google anomaly masked with causal forward-fill (reconfirmed by re-downloading three affected items)
+- Some Google Trends files mix Topic entities with search terms; documented as MVP approximation
+- China is not tracked (Baidu Index requires a Chinese phone number)
+- `denim_jacket` has no parent material because denim fabric is not tracked
+- Sep-2026 covers 28/30 days for the six oldest Naver files; treated as complete
+- Lag analysis is exploratory; p-values are not robust to method choice
+- Multi-horizon backtest is exploratory; **0 of 48 tests survive BH correction**
+- Findings specific to 2017–2026; not generalizable without validation
+
+Full list in `data/processed/trend_radar.json` under `limitations`.
+
+---
+
+## Responsible AI
+
+- **No hidden numbers.** Every figure in the UI is sourced from `trend_radar.json` or `lag_results.csv`
+- **No cross-layer ranking.** The UI is structurally unable to compare item / material / item+material levels
+- **No invented quantities.** Store Advisor never provides a quantity for material-layer signals, and never issues ORDER NOW for items with weak seasonality evidence
+- **No LLM hallucination surface.** IBM Bob has no direct file access; every number must pass through the Langflow component
+- **Two-sided results.** The dashboard hero shows 1/12 *and* 0/48 in the same view
+
+---
+
+## Author
+
+**Solo submission — Kori, BINUS University**
+Hacktiv8 × IBM Hackathon, 11 October 2026
+
+The statistical pipeline, pre-registered validation gate, frontend, Cloudflare Workers endpoint, and IBM Langflow component were built by one person in the hackathon window.
+
+## Acknowledgements
+
+Naver DataLab (Korea), Google Trends (Indonesia), IBM Langflow, IBM Bob.
