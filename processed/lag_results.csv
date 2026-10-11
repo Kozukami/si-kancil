@@ -1,0 +1,13 @@
+item,layer,parent,n_points_full,n_points_used,best_lag,best_r,max_abs_r,direction,p_perm,p_adj,significant_fdr05,exploratory_only,max_abs_placebo_r,placebo_flag
+cardigan,item,,117,108,4,-0.1318,0.1318,naver_leads,0.949050949050949,0.9560439560439561,False,True,0.3542528061512276,"WARNING: unrelated item correlates as strongly (shared trend/shock, not seasonality)"
+cargo_pants,item,,117,108,7,0.7108,0.7108,naver_leads,0.01098901098901099,0.06593406593406595,False,True,0.4121165397667245,ok
+cotton,material,,117,108,8,0.3434,0.3434,naver_leads,0.36663336663336665,0.7222777222777224,False,True,0.3010935719452046,"WARNING: unrelated item correlates as strongly (shared trend/shock, not seasonality)"
+cotton_shirt,item+material,cotton,117,108,-1,-0.2527,0.2527,google_leads,0.45254745254745254,0.7222777222777224,False,True,0.37598121417822544,"WARNING: unrelated item correlates as strongly (shared trend/shock, not seasonality)"
+denim_jacket,item+material,,117,108,8,-0.4436,0.4436,naver_leads,0.06493506493506493,0.1948051948051948,False,True,0.34869711553023575,ok
+fleece,material,,117,108,-4,0.4667,0.4667,google_leads,0.016983016983016984,0.06793206793206794,False,True,0.33438443065598705,ok
+knit_vest,item,,117,108,-4,0.5531,0.5531,google_leads,0.00999000999000999,0.06593406593406595,False,True,0.5793350401237729,"WARNING: unrelated item correlates as strongly (shared trend/shock, not seasonality)"
+oversized_blazer,item,,117,108,4,0.213,0.213,naver_leads,0.6863136863136863,0.9150849150849151,False,True,0.3406662095775233,"WARNING: unrelated item correlates as strongly (shared trend/shock, not seasonality)"
+oversized_hoodie,item,,117,108,7,0.3082,0.3082,naver_leads,0.14385614385614387,0.34525474525474525,False,True,0.30734851944934427,"WARNING: unrelated item correlates as strongly (shared trend/shock, not seasonality)"
+polyester,material,,117,108,4,0.1227,0.1227,naver_leads,0.9460539460539461,0.9560439560439561,False,True,0.5049740483572758,"WARNING: unrelated item correlates as strongly (shared trend/shock, not seasonality)"
+viscose,material,,117,108,8,-0.1272,0.1272,naver_leads,0.9560439560439561,0.9560439560439561,False,True,0.49906534200318,"WARNING: unrelated item correlates as strongly (shared trend/shock, not seasonality)"
+wide_leg_pants,item,,117,108,5,-0.327,0.327,naver_leads,0.48151848151848153,0.7222777222777224,False,True,0.5905419885132412,"WARNING: unrelated item correlates as strongly (shared trend/shock, not seasonality)"
